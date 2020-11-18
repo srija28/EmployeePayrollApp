@@ -16,7 +16,6 @@ class EmployeePayrollData{
         if(nameRegex.test(name))
         this._name = name;
         else {
-        alert("Name is incorrect!");
         throw "Name is Incorrect!! "+name;
        }
     }
@@ -55,7 +54,6 @@ class EmployeePayrollData{
          this._startDate = startDate;
         else
        { 
-           alert("Start Date is invalid."); 
             throw "Invalid Start date "+startDate;
         }
     }
