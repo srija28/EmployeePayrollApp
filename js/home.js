@@ -1,11 +1,19 @@
+let employeePayrollList;
 window.addEventListener("DOMContentLoaded", (event) => {
+    employeePayrollList = getEmployeeFromStorage();
+    console.log(employeePayrollList);
+    document.querySelector(".emp-count").textContent = employeePayrollList.length;
     createInnerHtml();
  });
+
+ const getEmployeeFromStorage = () => {
+    return localStorage.getItem("EmployeePayrollList") ? JSON.parse(localStorage.getItem("EmployeePayrollList")) : [];
+};
  
  const createInnerHtml = () => {
     const headerHtml = "<tr><th></th><th>Name</th><th>Gender</th><th>Department</th><th>Salary</th><th>Start Date</th><th>Actions</th></tr>"
+    if(employeePayrollList.length == 0) return;
     let innerHtml = `${headerHtml}`
-    let employeePayrollList = createEmployeePayrollJSON();
     for(const employee of employeePayrollList){
     innerHtml = `${innerHtml}
     <tr>
@@ -18,39 +26,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
     <td>${employee._salary}</td>
     <td>${employee._startDate}</td>
     <td>
-        <img id="${employee._id}" onclick="remove(this)" alt="delete" src="../assets/delete-black-18dp.svg">
-        <img id="${employee._id}" alt="edit" onclick="update(this)" src="../assets/create-black-18dp.svg">
+        <img name="${employee._id}" onclick="remove(this)" alt="delete" src="../assets/delete-black-18dp.svg">
+        <img name="${employee._id}" alt="edit" onclick="update(this)" src="../assets/create-black-18dp.svg">
     </td>
  </tr>
     `;
  }
     document.querySelector("#display").innerHTML = innerHtml;
- };
- 
- const createEmployeePayrollJSON = () => {
-    let employeeListLocal = [
-        {
-        _name: "Shreya",
-        _gender: "Female",
-        _department: ["finance"],
-        _salary: "7000000",
-        _startDate: "19 Nov 2020",
-        _note: "",
-        _id: new Date().getTime(),
-        _picture: "../assets/Ellipse -7.png"
-        },
-    {
-     _name: "Srija",
-     _gender: "Female",
-     _department: ["finance","Sales"],
-     _salary: "5000000",
-     _startDate: "19 Nov 2018",
-     _note: "",
-     _id: new Date().getTime() + 1,
-     _picture: "../assets/Ellipse -1.png"
-    }
-    ];
-    return employeeListLocal;
  };
  
  const getDeptHtml = (deptList) => {
