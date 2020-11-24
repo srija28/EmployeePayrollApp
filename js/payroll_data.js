@@ -1,12 +1,9 @@
 class EmployeePayrollData{
-    constructor(...params){
-        this.name = params[0];
-        this.salary = params[1];
-        this.gender=params[2];
-        this.startDate = params[3];
-        this.department = params[4];
-        this.profile = params[5];
-        this.notes = params[6];
+    get id(){
+        return this._id;
+    }
+    set id(id){
+        this._id=id;
     }
     get name(){
         return this._name;
@@ -15,15 +12,13 @@ class EmployeePayrollData{
         let nameRegex =RegExp('^[A-Z]{1}[a-zA-Z\\s]{2,}$');
         if(nameRegex.test(name))
         this._name = name;
-        else {
-        throw "Name is Incorrect!! "+name;
-       }
+        else throw "Name is Incorrect!! "+name;
     }
-    get profile(){
-        return this._profile;
+    get profilePic(){
+        return this._profilePic;
     }
-    set profile(profile){
-        this._profile = profile;
+    set profilePic(profilePic){
+        this._profilePic = profilePic;
     }
     get gender(){
         return this._gender;
@@ -57,15 +52,15 @@ class EmployeePayrollData{
             throw "Invalid Start date "+startDate;
         }
     }
-    get notes(){
-        return this._notes;
+    get note(){
+        return this._note;
     }
-    set notes(notes){
-        this._notes=notes;
+    set note(note){
+        this._note=note;
     }
     toString(){
         const options = { year: 'numeric', month: 'long' , day: 'numeric'};
-        const empDate = this.startDate === undefined ? "undefined":this.startDate.toLocaleDateString("en-US",options);
-        return  "Name = "+this.name+", Salary = "+this.salary+" ,Gender = "+this.gender+" ,Start date = "+empDate+" ,Department = "+this.department+" ,Profile = "+this.profile+" ,Notes = "+this.notes;
+        const empDate = !this.startDate ? "undefined": this.startDate.toLocaleDateString("en-US",options);
+        return "id="+this.id+ ", Name = "+this.name+", Salary = "+this.salary+" ,Gender = "+this.gender+" ,Start date = "+empDate+" ,Department = "+this.department+" ,ProfilePic = "+this.profilePic+" ,Notes = "+this.note;
     }
 }
