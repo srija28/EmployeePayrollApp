@@ -1,33 +1,33 @@
-let employeePayrollList;
+let empPayrollList;
 window.addEventListener("DOMContentLoaded", (event) => {
-    employeePayrollList = getEmployeeFromStorage();
-    console.log(employeePayrollList);
-    document.querySelector(".emp-count").textContent = employeePayrollList.length;
+    empPayrollList = getEmployeePayrollDataFromStorage();
+    document.querySelector(".emp-count").textContent = empPayrollList.length;
     createInnerHtml();
+    localStorage.removeItem('editEmp');
  });
 
- const getEmployeeFromStorage = () => {
+ const getEmployeePayrollDataFromStorage = () => {
     return localStorage.getItem("EmployeePayrollList") ? JSON.parse(localStorage.getItem("EmployeePayrollList")) : [];
 };
  
  const createInnerHtml = () => {
-    const headerHtml = "<tr><th></th><th>Name</th><th>Gender</th><th>Department</th><th>Salary</th><th>Start Date</th><th>Actions</th></tr>"
-    if(employeePayrollList.length == 0) return;
+    const headerHtml = "<th></th><th>Name</th><th>Gender</th><th>Department</th><th>Salary</th><th>Start Date</th><th>Actions</th>"
+    if(empPayrollList.length == 0) return;
     let innerHtml = `${headerHtml}`
-    for(const employee of employeePayrollList){
+    for(const empPayrollData of empPayrollList){
     innerHtml = `${innerHtml}
     <tr>
     <td>
-        <img class="profile" alt="" src="${employee._picture}">
+        <img class="profile" alt="" src="${empPayrollData._profilePic}">
     </td>
-    <td>${employee._name}</td>
-    <td>${employee._gender}</td>
-    <td>${getDeptHtml(employee._department)}</td>
-    <td>${employee._salary}</td>
-    <td>${employee._startDate}</td>
+    <td>${empPayrollData._name}</td>
+    <td>${empPayrollData._gender}</td>
+    <td>${getDeptHtml(empPayrollData._department)}</td>
+    <td>${empPayrollData._salary}</td>
+    <td>${stringifyDate(empPayrollData._startDate)}</td>
     <td>
-        <img name="${employee._id}" onclick="remove(this)" alt="delete" src="../assets/delete-black-18dp.svg">
-        <img name="${employee._id}" alt="edit" onclick="update(this)" src="../assets/create-black-18dp.svg">
+        <img name="${empPayrollData._id}" onclick="remove(this)" alt="delete" src="../assets/delete-black-18dp.svg">
+        <img name="${empPayrollData._id}" alt="edit" onclick="update(this)" src="../assets/create-black-18dp.svg">
     </td>
  </tr>
     `;
