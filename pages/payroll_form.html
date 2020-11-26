@@ -60,27 +60,27 @@
             <div class="row-content">
                 <label class="label text" for="department">Department</label>
                 <div>
-                    <input class="checkbox" type="checkbox" id="hr" name="hr" value="HR">
+                    <input class="checkbox" type="checkbox" id="hr" name="department" value="HR">
                     <label class="text" for="hr">HR</label>
-                    <input class="checkbox" type="checkbox" id="sales" name="sales" value="Sales">
+                    <input class="checkbox" type="checkbox" id="sales" name="department" value="Sales">
                     <label class="text" for="sales">Sales</label>
-                    <input class="checkbox" type="checkbox" id="finance" name="finance" value="Finance">
+                    <input class="checkbox" type="checkbox" id="finance" name="department" value="Finance">
                     <label class="text" for="finance">Finance</label>
-                    <input class="checkbox" type="checkbox" id="engineer" name="engineer" value="Engineer">
+                    <input class="checkbox" type="checkbox" id="engineer" name="department" value="Engineer">
                     <label class="text" for="engineer">Engineer</label>
-                    <input class="checkbox" type="checkbox" id="others" name="others" value="Others">
+                    <input class="checkbox" type="checkbox" id="others" name="department" value="Others">
                     <label class="text" for="others">Others</label>
                 </div>
             </div>
             <div class="row-content">
                 <label class="label text" for="salary">Choose Your Salary: </label>
-                <input class="input" type="range" name="salary" id="salary" min="1000" max="10000" step="100" onclick="salaryInput()">
+                <input class="input" type="range" name="salary" id="salary" min="1000" max="10000" step="100">
                 <output class="salary-output text" for="salary">40000</output>
             </div>
             <div class="row-content">
                 <label class="label text" for="startDate">Start Date</label>
-                <div>
-                    <select id="day" name="Day">
+                <div id= "date"> 
+                    <select id="Day" name="Day">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -113,7 +113,7 @@
                         <option value="30">30</option>
                         <option value="31">31</option>
                     </select>
-                    <select id="month" name="Month">
+                    <select id="Month" name="Month">
                         <option value="Jan">January</option>
                         <option value="Feb">February</option>
                         <option value="March">March</option>
@@ -127,7 +127,7 @@
                         <option value="Nov">November</option>
                         <option value="Dec">December</option>
                     </select>
-                    <select id="year" name="Year">
+                    <select id="Year" name="Year">
                         <option value="2020">2020</option>
                         <option value="2019">2019</option>
                         <option value="2018">2018</option>
