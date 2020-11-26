@@ -43,15 +43,9 @@ class EmployeePayrollData{
         return this._startDate;
     }
     set startDate(startDate){
-        if(startDate.getMonth()<=(new Date()).getMonth()
-        &&startDate.getDay()<=(new Date()).getDay()
-        &&startDate.getFullYear()<=(new Date()).getFullYear())
          this._startDate = startDate;
-        else
-       { 
-            throw "Invalid Start date "+startDate;
-        }
     }
+    
     get note(){
         return this._note;
     }
